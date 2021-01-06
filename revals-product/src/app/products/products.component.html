@@ -1,0 +1,50 @@
+<div class="header">
+    <table>
+        <td> <img class='logo' src='assets/image/mcclahahnocljmhn.png' alt='image'></td>
+        <td><a style='margin-left: 520px;margin-top: 18px;color: #fff;' class="nav-link"
+                [routerLink]="['feedback']">FeedBack</a></td>
+    </table>
+
+</div>
+<!--table-->
+<div class="table table-responsive">
+    <table class="table table-bordered
+                    table-hover
+                    table-stripped
+                    table-condensed">
+        <thead class="bg-success" style='color:white;'>
+            <tr>
+                <th style='font-weight: 400;'>S.NO</th>
+                <th style='font-weight: 400;'>Image</th>
+                <th style='font-weight: 400;'> ProductTitle</th>
+                <th style='font-weight: 400;'>Price</th>
+                <th style='font-weight: 400;'>Collection </th>
+                <th style='font-weight: 400;'>StyleName</th>
+                <th style='font-weight: 400;'>StyleNumber</th>
+                <th style='font-weight: 400;'>NetQuantity</th>
+                <th style='font-weight: 400;'>ProductCode</th>
+                <th style='font-weight: 400;'>AvailableSizes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of ProductRecords|paginate: config;">
+                <td>{{x.s_no}}</td>
+                <td width='30px'><img src="{{'x.ListImagePath'}}+{{'x.Images'}}" alt='img' width="20px" height="20px">
+                </td>
+                <td>{{x.ProductTitle}}</td>
+                <td>{{x.Price}}</td>
+                <td>{{x.Collection}}</td>
+                <td>{{x.StyleName}}</td>
+                <td>{{x.StyleNumber}}</td>
+                <td>{{x.NetQuantity}}</td>
+                <td>{{x.ProductCode}}</td>
+                <td>{{x.AvailableSizes}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+<!--mat end-->
+<div class="footer">
+    <p style="margin-top:9px">Copyright @ 2021 Revalesys limited</p>
+</div>

@@ -1,0 +1,50 @@
+<div class="container feedForm">
+    <h1>FeedBack</h1>
+    <form [formGroup]="feedbackForm" (ngSubmit)="Submit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName='name' class="form-control" placeholder="Enter Your Name"
+                [ngClass]="{ 'is-invalid': submitted && name.invalid }">
+        </div>
+        <div *ngIf="submitted && name.touched && name.invalid " class="invalid-feedback">
+            <div *ngIf="name.errors.required">Name is required</div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" formControlName='email' class="form-control" placeholder="Enter email"
+                [ngClass]="{ 'is-invalid': submitted && email.invalid }">
+        </div>
+        <div *ngIf="submitted && email.touched && email.invalid " class="invalid-feedback">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="number" formControlName='mobile' class="form-control" placeholder="Enter Your Mobile Number"
+                [ngClass]="{ 'is-invalid': submitted && mobile.invalid }">
+        </div>
+        <div *ngIf="submitted && mobile.touched && mobile.invalid " class="invalid-feedback">
+            <div *ngIf="mobile.errors.required">MobileNumber is required</div>
+            <div *ngIf="mobile.errors.pattern">Mobile Number Shuld Be 9 digites</div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="mobile">Write Your Comments:</label>
+            <textarea class="form-control" formControlName='comments' id="exampleFormControlTextarea1" rows="3"
+                [ngClass]="{ 'is-invalid': submitted && comments.invalid }"></textarea>
+        </div>
+        <div *ngIf="submitted && comments.touched && comments.invalid " class="invalid-feedback">
+            <div *ngIf="comments.errors.required">Comments is required</div>
+        </div>
+
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember me
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
