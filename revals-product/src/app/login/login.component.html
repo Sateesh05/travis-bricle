@@ -6,18 +6,20 @@
             <div class='form-group'>
                 <input type="text" formControlName='username' placeholder="Username" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && u.invalid }">
-            </div>
-            <div *ngIf="submitted && u.touched && u.invalid " class="invalid-feedback">
-                <div *ngIf="u.errors.required">Email is required</div>
-                <div *ngIf="u.errors.pattern">Email must be a valid email address</div>
+            
+                <div *ngIf="submitted && u.touched && u.invalid " class="invalid-feedback">
+                    <div *ngIf="u.errors.required">Email is required</div>
+                    <div *ngIf="u.errors.pattern">Email must be a valid email address</div>
+                </div>
             </div>
             <div class="form-group">
                 <input type="password" formControlName='Password' placeholder="Password" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && p.invalid }">
-            </div>
-            <div *ngIf="submitted && p.touched && p.invalid" class="invalid-feedback">
-                <div *ngIf="p.errors.required">Password is required</div>
-                <div *ngIf="p.errors.minlength">Password must be at least 8 characters</div>
+           
+                <div *ngIf="submitted && p.touched && p.invalid" class="invalid-feedback">
+                    <div *ngIf="p.errors.required">Password is required</div>
+                    <div *ngIf="p.errors.minlength">Password must be at least 8 characters</div>
+                </div>
             </div>
             <input type="submit" value="Login">
         </form>

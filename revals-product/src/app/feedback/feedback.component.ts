@@ -22,14 +22,29 @@ export class FeedbackComponent implements OnInit {
   get email() { return this.feedbackForm.get('email'); }
   get mobile() { return this.feedbackForm.get('mobile'); }
   get comments() { return this.feedbackForm.get('comments'); }
+//local storage how to store data in local
+appendToStorage(name, data){
 
+  var old = localStorage.getItem(name);
+  if(old === null){ 
+    localStorage.setItem(name,JSON.stringify(data));
+  }else{
+    old = JSON.parse(old);
+    const array3 = [...old, ...data];
+    //var appendData = Object.assign(old, data)
+    localStorage.setItem(name,JSON.stringify(array3));
+  };
+};
   Submit() {
     console.log(this.feedbackForm.value);
     this.submitted = true;
     if (this.feedbackForm.valid) {
-      localStorage.setItem('feedback', JSON.stringify(this.feedbackForm.value));
+      //localStorage.setItem('feedback', JSON.stringify(this.feedbackForm.value));
+      var localSto:Array<any> = [this.feedbackForm.value];
+      this.appendToStorage('feedback',localSto);
       this.feedbackForm.reset(this.feedbackForm.value);
       console.log('fbsubmitted')
+      alert('feed back saved');
     }
   };
 }
