@@ -31,7 +31,7 @@ appendToStorage(name, data){
   }else{
     old = JSON.parse(old);
     const array3 = [...old, ...data];
-    //var appendData = Object.assign(old, data)
+    //store new arra3 stored in localStorage
     localStorage.setItem(name,JSON.stringify(array3));
   };
 };
@@ -39,7 +39,6 @@ appendToStorage(name, data){
     console.log(this.feedbackForm.value);
     this.submitted = true;
     if (this.feedbackForm.valid) {
-      //localStorage.setItem('feedback', JSON.stringify(this.feedbackForm.value));
       var localSto:Array<any> = [this.feedbackForm.value];
       this.appendToStorage('feedback',localSto);
       this.feedbackForm.reset(this.feedbackForm.value);
